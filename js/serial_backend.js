@@ -188,7 +188,6 @@ function onOpen(openInfo) {
             GUI.log(chrome.i18n.getMessage('apiVersionReceived', [CONFIG.apiVersion]));
 
             if (semver.gte(CONFIG.apiVersion, CONFIGURATOR.apiVersionAccepted)) {
-                GUI.log("inside1");
                 MSP.send_message(MSP_codes.MSP_FC_VARIANT, false, false, function () {
                     GUI.log("inside2");
                     //MSP.send_message(MSP_codes.MSP_FC_VERSION, false, false, function () {
