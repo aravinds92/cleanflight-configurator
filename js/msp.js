@@ -715,6 +715,7 @@ var MSP = {
                 CONFIG.uid[2] = data.getUint32(8, 1);
                 break;
             case MSP_codes.MSP_ACC_TRIM:
+                GUI.log("accelerometer values received");
                 CONFIG.accelerometerTrims[0] = data.getInt16(0, 1); // pitch
                 CONFIG.accelerometerTrims[1] = data.getInt16(2, 1); // roll
                 break;

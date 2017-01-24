@@ -189,7 +189,6 @@ function onOpen(openInfo) {
 
             if (semver.gte(CONFIG.apiVersion, CONFIGURATOR.apiVersionAccepted)) {
                 MSP.send_message(MSP_codes.MSP_FC_VARIANT, false, false, function () {
-                    GUI.log("inside2");
                     //MSP.send_message(MSP_codes.MSP_FC_VERSION, false, false, function () {
                         //GUI.log("inside3");
                         googleAnalytics.sendEvent('Firmware', 'Variant', CONFIG.flightControllerIdentifier + ',' + CONFIG.flightControllerVersion);
