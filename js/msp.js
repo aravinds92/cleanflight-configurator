@@ -793,6 +793,7 @@ var MSP = {
                     identifier += String.fromCharCode(data.getUint8(offset));
                 }
                 CONFIG.flightControllerIdentifier = identifier;
+                CONFIG.flightControllerVersion = data.getUint8(offset++) + '.' + data.getUint8(offset++) + '.' + data.getUint8(offset++);
                 break;
 
             case MSP_codes.MSP_FC_VERSION:
