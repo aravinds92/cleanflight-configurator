@@ -22,6 +22,7 @@ TABS.servos.initialize = function (callback) {
     }
 
     function get_boxnames_data() {
+        GUI.log("servos.js");
         MSP.send_message(MSP_codes.MSP_BOXNAMES, false, false, load_html);
     }
 

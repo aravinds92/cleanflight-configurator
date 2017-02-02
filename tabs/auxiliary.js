@@ -22,7 +22,7 @@ TABS.auxiliary.initialize = function (callback) {
     function load_html() {
         $('#content').load("./tabs/auxiliary.html", process_html);
     }
-
+    GUI.log("auxillary.js");
     MSP.send_message(MSP_codes.MSP_BOXNAMES, false, false, get_mode_ranges);
 
     function createMode(modeIndex, modeId) {

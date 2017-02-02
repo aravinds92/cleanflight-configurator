@@ -449,7 +449,7 @@ function stopLiveDataRefreshTimer() {
 function refresh_live_status() {
 
     stopLiveDataRefreshTimer();
-    startLiveDataRefreshTimer();
+    startLiveDataRefreshTimer();            //this and the line before->why??
 
     var statuswrapper = $('#quad-status_wrapper');
     if (GUI.active_tab == 'cli') {
@@ -463,6 +463,7 @@ function refresh_live_status() {
 }
 
 function fetch_data_for_live_status() {
+    //GUI.log("serial_backend.js");
     MSP.send_message(MSP_codes.MSP_BOXNAMES, false, false, fetch_status);
 }
 
@@ -479,6 +480,7 @@ function fetch_battery_configuration() {
 }
 
 function fetch_battery_voltage() {
+    //GUI.log("Fetching battery voltage");
     if (semver.lt(CONFIG.apiVersion, "1.22.0")) {
         MSP.send_message(MSP_codes.MSP_ANALOG, false, false, update_live_status);
     } else {
@@ -487,6 +489,7 @@ function fetch_battery_voltage() {
 }
 
 function update_live_status() {
+    //GUI.log("in live_status");
     $(".quad-status-contents").css({
        display: 'inline-block'
     });

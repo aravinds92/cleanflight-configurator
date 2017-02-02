@@ -22,7 +22,7 @@ TABS.adjustments.initialize = function (callback) {
     function load_html() {
         $('#content').load("./tabs/adjustments.html", process_html);
     }
-
+    GUI.log("adjustments.js");
     MSP.send_message(MSP_codes.MSP_BOXNAMES, false, false, get_adjustment_ranges);
 
     function addAdjustment(adjustmentIndex, adjustmentRange, auxChannelCount) {

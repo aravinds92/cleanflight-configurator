@@ -23,6 +23,7 @@ TABS.failsafe.initialize = function (callback, scrollPosition) {
     }
 
     function get_box_names() {
+        GUI.log("failsafe.js");
         MSP.send_message(MSP_codes.MSP_BOXNAMES, false, false, get_mode_ranges);
     }
 
