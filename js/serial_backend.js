@@ -311,6 +311,7 @@ function onClosed(result) {
 
 function read_serial(info) {
     if (!CONFIGURATOR.cliActive) {
+        //console.log(info);
         MSP.read(info);
     } else if (CONFIGURATOR.cliActive) {
         TABS.cli.read(info);
