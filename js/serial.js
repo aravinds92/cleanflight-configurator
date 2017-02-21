@@ -217,6 +217,8 @@ var serial = {
 
             chrome.serial.send(self.connectionId, data, function (sendInfo) {
                 // track sent bytes for statistics
+                if(sendInfo.bytesSent < 6)
+                    GUI.log("Lesser data sent");
                 self.bytesSent += sendInfo.bytesSent;
 
                 // fire callback

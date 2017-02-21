@@ -191,11 +191,14 @@ var MSP = {
 
     read: function (readInfo) {
         var data = new Uint8Array(readInfo.data);
-        console.log(data.length);
+        //console.log(data.length);
         for (var i = 0; i < data.length; i++) {
             switch (this.state) {
                 case 0: // sync char 1
                     if (data[i] == 36) { // $
+                        this.state++;
+                    }
+                    else if(data[i+1] == 77) {  //M(due to irregularities in serial connection)
                         this.state++;
                     }
                     break;
@@ -210,6 +213,7 @@ var MSP = {
                     this.unsupported = 0;
                     if (data[i] == 62) { // >
                         this.message_direction = 1;
+                        this.state++;
                     } else if (data[i] == 60) { // <
                         this.message_direction = 0;
                     } else if (data[i] == 33) { // !
@@ -217,7 +221,7 @@ var MSP = {
                         this.unsupported = 1;
                     }
 
-                    this.state++;
+                    //this.state++;
                     break;
                 case 3:
                     this.message_length_expected = data[i];
@@ -271,7 +275,11 @@ var MSP = {
                     console.log('Unknown state detected: ' + this.state);
             }
         }
+        chrome.serial.flush(serial.connectionId, this.dummy);
         this.last_received_timestamp = Date.now();
+    },
+    dummy: function(result){
+        console.log("Flushed");
     },
     process_data: function (code, message_buffer, message_length) {
         var data = new DataView(message_buffer, 0); // DataView (allowing us to view arrayBuffer as struct/union)

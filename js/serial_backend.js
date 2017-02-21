@@ -53,7 +53,7 @@ $(document).ready(function () {
                     $('div.connect_controls a.connect_state').text(chrome.i18n.getMessage('connecting'));
 
 
-                    serial.connect(selected_port, {bitrate: selected_baud}, onOpen);
+                    serial.connect(selected_port, {bitrate: selected_baud, sendTimeout: 100}, onOpen);
                 } else {
                     GUI.timeout_kill_all();
                     GUI.interval_kill_all();
